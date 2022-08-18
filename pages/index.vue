@@ -15,12 +15,39 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { getGifs } from '@/api/getGifs'
 
-const isLoading = ref(false)
-const errorMessage = ref<string | null>(null)
-const data = ref([])
+export default defineComponent({
+  components: {
+    ErrorMessage: defineAsyncComponent(() => import('@/components/ErrorMessage.vue'))
+  },
+  data() {
+    return {
+      isLoading: false,
+      errorMessage: null,
+      data: []
+    }
+  },
+  methods: {
+    async handleGetGifs() {
+      this.isLoading = true
+
+      try {
+        const result = await getGifs()
+
+        this.data = result.data
+      } catch (error) {
+        this.errorMessage = error
+      } finally {
+        this.isLoading = false
+      }
+    }
+  },
+  mounted() {
+    this.handleGetGifs()
+  }
+})
 </script>
 
 <style>
