@@ -9,6 +9,8 @@ branches:
 - `options-api-async` - example of handling async action with options API + lazy loaded component
 - `use-async-data` - Nuxt bonus - example of handling async action with `useAsyncData` composable provided by Nuxt3
 
+Code with examples is available in `/pages/index.vue` file.
+
 ### `getGifs` function
 
 If you pass `false` as an argument of `getGifs` function it returns rejected promise.
