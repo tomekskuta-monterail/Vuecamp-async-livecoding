@@ -9,6 +9,14 @@ branches:
 - `options-api-async` - example of handling async action with options API + lazy loaded component
 - `use-async-data` - Nuxt bonus - example of handling async action with `useAsyncData` composable provided by Nuxt3
 
+### `getGifs` function
+
+If you pass `false` as an argument of `getGifs` function it returns rejected promise.
+
+```ts
+const result = await getGifs(false) // throws an error
+```
+
 ## Setup
 
 Make sure to install the dependencies:
