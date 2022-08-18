@@ -22,7 +22,7 @@ const isLoading = ref(false)
 const errorMessage = ref<string | null>(null)
 const data = ref([])
 
-const handleGetGifs = async () => {
+const handleGetGifs = () => {
   isLoading.value = true
 
   getGifs()
