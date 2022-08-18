@@ -18,9 +18,14 @@
 <script setup lang="ts">
 import { getGifs } from '@/api/getGifs'
 
-const isLoading = ref(false)
-const errorMessage = ref<string | null>(null)
-const data = ref([])
+const { data, pending: isLoading, error: errorMessage } = await useAsyncData(
+  () => getGifs(),
+  {
+    server: true,
+    transform: (input) => input.data,
+    lazy: true,
+  }
+)
 </script>
 
 <style>
