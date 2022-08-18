@@ -21,6 +21,25 @@ import { getGifs } from '@/api/getGifs'
 const isLoading = ref(false)
 const errorMessage = ref<string | null>(null)
 const data = ref([])
+
+const handleGetGifs = async () => {
+  isLoading.value = true
+
+  getGifs()
+    .then((result) => {
+      data.value = result.data
+    })
+    .catch((error) => {
+      errorMessage.value = error
+    }) 
+    .finally(() => {
+      isLoading.value = false
+    })
+}
+
+onMounted(() => {
+  handleGetGifs()
+}) 
 </script>
 
 <style>
